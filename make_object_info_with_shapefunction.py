@@ -60,5 +60,20 @@ amp = np.random.RandomState(0).rand(Ny, Nx).astype(np.float32)
 # phase = np.zeros((Ny, Nx), dtype=np.float32)
 # amp = (0.8 * blurred).astype(np.float32)
 
-np.save("E:/optics(H)/gs_phase_retrieval_with_64_tests_11_20_new/my_test_sets_ratio/my_amp.npy", amp)
-np.save("E:/optics(H)/gs_phase_retrieval_with_64_tests_11_20_new/my_test_sets_ratio/my_phase.npy", phase)
+pad_size = 200              # padding 总尺寸从 600 增加到 600+600 = 1200
+Ny_pad = Ny + pad_size      # 1200
+Nx_pad = Nx + pad_size      # 1200
+
+# 初始化 padded 数组（默认 0）
+amp_pad   = np.zeros((Ny_pad, Nx_pad), dtype=np.float32)
+phase_pad = np.zeros((Ny_pad, Nx_pad), dtype=np.float32)
+
+# 把原来的 600x600 居中放到 1200x1200 里
+sy = (Ny_pad - Ny) // 2      # 起始 y
+sx = (Nx_pad - Nx) // 2      # 起始 x
+
+amp_pad[sy:sy+Ny, sx:sx+Nx]   = amp
+phase_pad[sy:sy+Ny, sx:sx+Nx] = phase
+
+np.save("my_amp.npy", amp_pad)
+np.save("my_phase.npy", phase_pad)
