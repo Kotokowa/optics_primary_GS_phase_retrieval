@@ -1,0 +1,10 @@
+{
+  "iterations": 500,
+  "final_err_k": 0.2409261628303258,
+  "final_err_x": 7.579056350353024e-17,
+  "validation": {
+    "amp_rmse": 1.0005441062385345e-16,
+    "phase_mae_rad": 1.3031425016742277,
+    "global_phase_offset_rad": -1.3897019910626616
+  }
+}

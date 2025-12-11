@@ -1,0 +1,4 @@
+python ./gs_phase_retrieval.py --method gs `
+  --fourier-mag ./A_128x128_fourier_mag.npy `
+  --object-amp  ./A_128x128_object_amp.npy `
+  --iters 1000 --seed 2 --save-png --save-npy --outdir results_HEART_seed2
